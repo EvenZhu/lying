@@ -1,11 +1,16 @@
 {
-  "name": "helloworld",
-  "displayName": "HelloWorld",
-  "description": "LEAVE BLANK",
+  "name": "lying",
+  "displayName": "躺平",
+  "description": "遇事不决，躺平一下",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.84.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EvenZhu/lying.git"
+  },
+  "publisher": "LyingDown",
   "categories": [
     "Other"
   ],
@@ -14,8 +19,17 @@
   "contributes": {
     "commands": [
       {
-        "command": "helloworld.helloWorld",
-        "title": "Hello World"
+        "command": "lying.lying",
+        "title": "躺平"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "lying.lying",
+        "title": "躺平",
+        "key": "shift+ctrl+l",
+        "mac": "shift+ctrl+l",
+        "when": "true"
       }
     ]
   },
@@ -31,18 +45,21 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.84.0",
     "@types/mocha": "^10.0.3",
     "@types/node": "18.x",
+    "@types/vscode": "^1.84.0",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
+    "@vscode/test-electron": "^2.3.6",
     "eslint": "^8.52.0",
     "glob": "^10.3.10",
     "mocha": "^10.2.0",
-    "typescript": "^5.2.2",
     "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
-    "@vscode/test-electron": "^2.3.6"
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.10"
   }
 }

@@ -1,9 +1,19 @@
-# Change Log
+# 变更记录
 
-All notable changes to the "helloworld" extension will be documented in this file.
+躺平插件开发变更及版本记录
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 开发变更
 
-## [Unreleased]
+## 版本记录
 
-- Initial release
+### [0.0.1] - 2023.11.20
+
+- 第一个初始版本；
+- 快捷键和命令触发；
+- 实现躺平进度展示；
+- 实现Tab切换监听；
+- 实现编辑区输入监听；
+- 防止多次触发躺平操作；
+- 实现躺平禁止Coding的功能；
+- 开发取消当前躺平进度的功能；
+- 友好的全中文提示和弹窗提醒；
