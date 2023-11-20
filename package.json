@@ -2,15 +2,16 @@
   "name": "lying",
   "displayName": "躺平",
   "description": "遇事不决，躺平一下",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "icon": "lying.png",
   "engines": {
-    "vscode": "^1.84.0"
+    "vscode": "^1.64.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/EvenZhu/lying.git"
   },
-  "publisher": "LyingDown",
+  "publisher": "EvenZhu",
   "categories": [
     "Other"
   ],
