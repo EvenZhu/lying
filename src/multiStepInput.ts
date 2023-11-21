@@ -1,11 +1,6 @@
 import { QuickPickItem, window, Disposable, CancellationToken, QuickInputButton, QuickInput, ExtensionContext, QuickInputButtons, Uri } from 'vscode';
 
 export async function multiStepInput(context: ExtensionContext, then: (workTime: number, lyingTime: number, repeat: number) => void) {
-
-	class MyButton implements QuickInputButton {
-		constructor(public iconPath: { light: Uri; dark: Uri; }, public tooltip: string) { }
-	}
-
 	type PickItemWithMinute = QuickPickItem & { minute: number };
 
 	function parseMinute(text: string) {
@@ -19,7 +14,6 @@ export async function multiStepInput(context: ExtensionContext, then: (workTime:
 		.map(label => ({ label, minute: parseMinute(label) }));
 	const lyingGroups: PickItemWithMinute[] = ['3分钟', '5分钟', '10分钟', '15分钟', '20分钟', '30分钟', '1小时']
 		.map(label => ({ label, minute: parseMinute(label) }));
-
 
 	interface State {
 		title: string;

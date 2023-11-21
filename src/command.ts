@@ -35,36 +35,37 @@ export function finished(message: string | undefined = undefined, type: string =
   }
 }
 
-type ProgressHandler = (progress: any, token: any, workTime: number, lyingTime: number) => Thenable<void>;
+type ProgressHandler = (progress: any, token: any, workTime?: number, lyingTime?: number) => Thenable<void>;
 
 export function lyingAlert(event: any) {
   lying && event && window.showErrorMessage('现在是躺平时间，去休息吧！', { modal: true });
 }
 
-function doProgress(lyingState: boolean, workTime: number, lyingTime: number, handler: ProgressHandler) {
+function doProgress(lyingState: boolean, handler: ProgressHandler, workTime?: number, lyingTime?: number) {
   lying = lyingState;
   window.withProgress({
     location: ProgressLocation.Notification,
+    title: lyingState ? '躺平阶段' : '工作阶段',
     cancellable: lyingState
   }, (progress, token) => handler(progress, token, workTime, lyingTime));
 }
 
-const workHandler = (progress: any, _: any, workTime: number, lyingTime: number) => {
-  const totalSecond = workTime * 60;
+const workHandler = (progress: any, _: any, workTime?: number, lyingTime?: number) => {
+  const totalSecond = workTime! * 60;
   let second = totalSecond;
   progress.report({ message: '开始工作' });
 
   interval = setInterval(() => {
     const time = formatSeconds(second - 1);
     const percent = (totalSecond - second - 1) / totalSecond * 10;
-    progress.report({ message: `您的工作阶段还有 ${time}` });
+    progress.report({ message: `还有 ${time}` });
     second--;
   }, 1000);
 
   const p = new Promise<void>(resolve => {
     setTimeout(() => {
       if (interval) {
-        doProgress(true, workTime, lyingTime, lyingHandler);
+        doProgress(true, lyingHandler, workTime, lyingTime);
       }
       resolve();
     }, second * 1000);
@@ -73,8 +74,8 @@ const workHandler = (progress: any, _: any, workTime: number, lyingTime: number)
   return p;
 };
 
-const lyingHandler = (progress: any, token: any, lyingTime: number = 15, workTime?: number) => {
-  const totalSecond = lyingTime * 60; // 躺平时长：默认15分钟
+const lyingHandler = (progress: any, token: any, workTime?: number, lyingTime?: number) => {
+  const totalSecond = lyingTime! * 60; // 躺平时长：默认15分钟
   let second = totalSecond;
   token.onCancellationRequested(() => {
     finished('躺平大业，中道崩阻，你是真卷啊！', 'warn');
@@ -84,7 +85,7 @@ const lyingHandler = (progress: any, token: any, lyingTime: number = 15, workTim
   interval = setInterval(() => {
     const time = formatSeconds(second - 1);
     const percent = (totalSecond - second - 1) / totalSecond * 10;
-    progress.report({ message: `您的躺平阶段还有 ${time}` });
+    progress.report({ message: `还有 ${time}` });
     second--;
   }, 1000);
 
@@ -98,7 +99,7 @@ const lyingHandler = (progress: any, token: any, lyingTime: number = 15, workTim
 
         if (repeat > 0) {
           repeat--; // 番茄钟循环次数减1
-          doProgress(false, workTime ?? 1, lyingTime, workHandler);
+          doProgress(false, workHandler, workTime, lyingTime);
         } else {
           finished('番茄钟结束了，继续愉快地Coding吧！', 'warn');
         }
@@ -118,7 +119,7 @@ export default (context: ExtensionContext) => {
       番茄钟: (context: ExtensionContext) => multiStepInput(context, (workTime: number, lyingTime: number, repeatCount: number) => {
         mode = 1;
         repeat = --repeatCount;
-        doProgress(false, workTime, lyingTime, workHandler);
+        doProgress(false, workHandler, workTime, lyingTime);
       })
     };
     const quickPick = window.createQuickPick();
@@ -129,7 +130,7 @@ export default (context: ExtensionContext) => {
           .then((text) => {
             if (selection[0].label === '立即躺平') {
               mode = 0;
-              doProgress(true, 1, Number.parseInt(text ?? '1'), workHandler);
+              doProgress(true, workHandler, 0, Number.parseInt(text ?? '1'));
             }
           })
           .catch(console.error);
