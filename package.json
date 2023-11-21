@@ -1,8 +1,8 @@
 {
   "name": "lying",
   "displayName": "躺平",
-  "description": "遇事不决，躺平一下",
-  "version": "0.1.1",
+  "description": "遇事不决，躺平一下 ~ ",
+  "version": "0.1.3",
   "icon": "lying.png",
   "engines": {
     "vscode": "^1.64.1"
@@ -21,13 +21,13 @@
   "contributes": {
     "commands": [
       {
-        "command": "lying.lying",
+        "command": "evenzhu.lying",
         "title": "躺平"
       }
     ],
     "keybindings": [
       {
-        "command": "lying.lying",
+        "command": "evenzhu.lying",
         "title": "躺平",
         "key": "shift+ctrl+l",
         "mac": "shift+ctrl+l",
@@ -44,7 +44,8 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "test": "node ./out/test/runTest.js",
+    "vp": "vsce publish -p xpreynidn36kiqwil7yvlkrgr3u2kupp6i4m3ikcmn22pqupagoa"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.3",

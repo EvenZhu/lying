@@ -10,7 +10,7 @@ import { multiStepInput } from './multiStepInput';
 import { quickOpen } from './quickOpen';
 
 export function activate(context: ExtensionContext) {
-	context.subscriptions.push(commands.registerCommand('lying.lying', command));
+	context.subscriptions.push(commands.registerCommand('evenzhu.lying', command));
 
 	/**
 	 * 监听编辑器焦点变化和输入事件
