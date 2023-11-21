@@ -5,9 +5,7 @@ export async function multiStepInput(context: ExtensionContext, then: (workTime:
 
 	function parseMinute(text: string) {
 		const number = Number.parseInt(text);
-		return number;
-		// TODO: 发布前必须改为正确逻辑
-		// return number <= 2 ? number * 60 : number;
+		return number <= 2 ? number * 60 : number;
 	}
 
 	const workGroups: PickItemWithMinute[] = ['20分钟', '25分钟', '30分钟', '45分钟', '1小时', '2小时']

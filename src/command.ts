@@ -139,6 +139,6 @@ export default (context: ExtensionContext) => {
     quickPick.onDidHide(() => quickPick.dispose());
     quickPick.show();
   } else {
-    window.showWarningMessage('躺平中，勿Cue！', { modal: true });
+    window.showWarningMessage(`${mode ? '工作' : '躺平'}中，勿Cue！`, { modal: true });
   }
 };
