@@ -5,7 +5,7 @@ import {
 
 } from 'vscode';
 import { formatSeconds } from './utils';
-import { showInputBox, showQuickPick } from './basicInput';
+import { showInputBox } from './basicInput';
 import { multiStepInput } from './multiStepInput';
 
 let interval: NodeJS.Timeout | undefined;
@@ -75,7 +75,7 @@ const workHandler = (progress: any, _: any, workTime?: number, lyingTime?: numbe
 };
 
 const lyingHandler = (progress: any, token: any, workTime?: number, lyingTime?: number) => {
-  const totalSecond = lyingTime! * 60; // 躺平时长：默认15分钟
+  const totalSecond = lyingTime! * 60;
   let second = totalSecond;
   token.onCancellationRequested(() => {
     finished('躺平大业，中道崩阻，你是真卷啊！', 'warn');
@@ -130,7 +130,7 @@ export default (context: ExtensionContext) => {
           .then((text) => {
             if (selection[0].label === '立即躺平') {
               mode = 0;
-              doProgress(true, workHandler, 0, Number.parseInt(text ?? '1'));
+              doProgress(true, lyingHandler, 0, Number.parseInt(text ?? '1'));
             }
           })
           .catch(console.error);

@@ -5,9 +5,6 @@ import {
 	workspace
 } from 'vscode';
 import command, { finished, lyingAlert } from './command';
-import { showQuickPick, showInputBox } from './basicInput';
-import { multiStepInput } from './multiStepInput';
-import { quickOpen } from './quickOpen';
 
 export function activate(context: ExtensionContext) {
 	context.subscriptions.push(commands.registerCommand('evenzhu.lying', command));

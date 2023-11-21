@@ -15,7 +15,7 @@ export async function showInputBox() {
 			placeHolder: '请输入躺平时间（分钟数：1~120）',
 			validateInput: text => {
 				if (text === '') {
-					return '不能为空';
+					return '躺平时间不得为空';
 				}
 
 				const minute = Number.parseInt(text);
