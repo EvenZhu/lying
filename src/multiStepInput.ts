@@ -1,6 +1,6 @@
-import { QuickPickItem, window, Disposable, CancellationToken, QuickInputButton, QuickInput, ExtensionContext, QuickInputButtons, Uri } from 'vscode';
+import { QuickPickItem, window, Disposable, QuickInputButton, QuickInput, ExtensionContext, QuickInputButtons } from 'vscode';
 
-export async function multiStepInput(context: ExtensionContext, then: (workTime: number, lyingTime: number, repeat: number) => void) {
+export async function multiStepInput(context: ExtensionContext, then: (workTime: number, lyingTime: number, repeat: number, alertMessage: string) => void) {
 	type PickItemWithMinute = QuickPickItem & { minute: number };
 
 	function parseMinute(text: string) {
@@ -23,19 +23,20 @@ export async function multiStepInput(context: ExtensionContext, then: (workTime:
 	}
 
 	async function collectInputs() {
-		const state = {} as Partial<State>;
-		await MultiStepInput.run(input => pickWorkTime(input, state));
+		const state = {
+			step: 1, // 初始化为第一步
+		} as Partial<State>;
+		await MultiStepInput.run(input => pickTime(input, state));
 		return state as State;
 	}
 
 	const title = '配置番茄钟';
 
-	async function pickWorkTime(input: MultiStepInput, state: Partial<State>) {
-		const first = !state.step;
-		const step = first ? 1 : 2;
+	async function pickTime(input: MultiStepInput, state: Partial<State>) {
+		const first = state.step === 1;
 		const pick: PickItemWithMinute = await input.showQuickPick({
 			title,
-			step: step,
+			step: state.step!,
 			totalSteps: 3,
 			placeholder: first ? '请选择工作阶段时长' : '请选择躺平时长',
 			items: first ? workGroups : lyingGroups,
@@ -46,11 +47,11 @@ export async function multiStepInput(context: ExtensionContext, then: (workTime:
 		} else {
 			state.lyingTime = pick;
 		}
-		state.step = step;
 		if (state.step === 2) {
 			return (input: MultiStepInput) => inputRepeat(input, state);
 		}
-		return pickWorkTime(input, state);
+		state.step!++;
+		return pickTime(input, state);
 	}
 
 	async function inputRepeat(input: MultiStepInput, state: Partial<State>) {
@@ -77,9 +78,9 @@ export async function multiStepInput(context: ExtensionContext, then: (workTime:
 	}
 
 	const state = await collectInputs();
-	const repeatDesc = state.repeatCount === -1 ? '无限循环' : `循环${state.repeatCount}次`;
-	window.showInformationMessage(`您创建了一个番茄钟：工作${state.workTime.label}  躺平${state.lyingTime.label}  ${repeatDesc}`);
-	then(state.workTime.minute, state.lyingTime.minute, state.repeatCount);
+	const repeatDesc = '  ' + (state.repeatCount === -1 ? '无限循环' : `循环${state.repeatCount}次`);
+	const alertMessage = `番茄钟状态：${repeatDesc} - 工作${state.workTime.label} - 躺平${state.lyingTime.label}`;
+	then(state.workTime.minute, state.lyingTime.minute, state.repeatCount, alertMessage);
 }
 
 class InputFlowAction {
