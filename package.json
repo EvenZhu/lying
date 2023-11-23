@@ -44,8 +44,7 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js",
-    "vp": "vsce publish -p 6ez3pluc3g3ugp7tltxmmyfeocj3iry2rqf6c4g3i7pk476cjnja"
+    "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.3",
