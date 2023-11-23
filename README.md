@@ -15,20 +15,24 @@
 ## 插件功能
 
 - 进入躺平模式或开启番茄钟；
+
 ![选择模式](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ca78a91a3a07466c8eff6f7d024481dd~tplv-k3u1fbpfcp-jj-mark:3024:0:0:0:q75.awebp#?w=599&h=92&s=3891&e=png&b=fefefe)
 - 监听Tab切换和编辑区输入；
 - 展示工作阶段和躺平阶段倒计时；
+
 ![躺平倒计时](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5e5732faf81c4346a3d020f2d7ee648f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=452&h=85&s=8267&e=png&b=fefefe)
+
 ![工作阶段倒计时](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5120ea6ca0cc4db2975d07ce0deb5d8d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=451&h=102&s=14046&e=png&b=fbfbfb)
 - 躺平模式下禁止Coding，弹窗提醒；
 
-  ![弹窗提醒](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f13d44519bf4ed8b693dec9616197a9~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=260&h=180&s=11092&e=png&b=e4e4e4)
+![弹窗提醒](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f13d44519bf4ed8b693dec9616197a9~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=260&h=180&s=11092&e=png&b=e4e4e4)
 - 如果有需要，可以取消当前躺平进度；
+
 ![取消躺平](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6a245c3ef6624f0087331bcd34bd349e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=452&h=86&s=9970&e=png&b=fefefe)
 - 具备特别友好的全中文提示和弹窗提醒；
 - 防止通过快捷键和命令多次触发躺平操作；
 
-  ![躺平中.,.](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a10df556cf624c21b25c3d9c909338e3~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=260&h=180&s=9549&e=png&b=e4e4e4)
+![躺平中.,.](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a10df556cf624c21b25c3d9c909338e3~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=260&h=180&s=9549&e=png&b=e4e4e4)
 
 ## 碎碎念
 
