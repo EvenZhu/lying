@@ -2,7 +2,7 @@
   "name": "lying",
   "displayName": "躺平",
   "description": "遇事不决，躺平一下 ~ ",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "icon": "lying.png",
   "engines": {
     "vscode": "^1.64.1"
@@ -45,7 +45,7 @@
     "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
-    "vp": "vsce publish -p xpreynidn36kiqwil7yvlkrgr3u2kupp6i4m3ikcmn22pqupagoa"
+    "vp": "vsce publish -p 6ez3pluc3g3ugp7tltxmmyfeocj3iry2rqf6c4g3i7pk476cjnja"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.3",

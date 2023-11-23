@@ -2,9 +2,9 @@
 
 ## 使用方法
 - 使用快捷键直接进入躺平模式；
-  - Windows: `Ctrl + Alt + Shift + P`
+  - Windows: `Ctrl + Alt + Shift + L`
 ![windows键位图](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/450386d0f296422b8d22076c7a5f4229~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=3368&h=1132&s=3229678&e=png&b=212525)
-  - Mac: `Command + Option + Shift + P`
+  - Mac: `Command + Option + Shift + L`
 ![mac键位图](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/669431a1aec64b94ba5e790264a633a3~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=2196&h=850&s=205036&e=png&b=1f2125)
 - 执行命令进入躺平模式
   - VSCode打开命令模版
